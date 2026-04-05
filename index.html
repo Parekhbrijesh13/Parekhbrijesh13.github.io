@@ -1,0 +1,1051 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Brijesh Parekh - IT Student & Laravel Developer Portfolio"
+    />
+    <title>Brijesh Parekh | Laravel Developer</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome (Correct CDN) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="#home" class="nav-logo">
+          <span class="logo-text">BP</span>
+        </a>
+
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#education" class="nav-link">Education</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+
+        <!-- Theme Toggle -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <i class="fas fa-moon"></i>
+          <i class="fas fa-sun"></i>
+        </button>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <!-- Animated Background -->
+      <div class="hero-bg">
+        <div class="gradient-sphere sphere-1"></div>
+        <div class="gradient-sphere sphere-2"></div>
+        <div class="gradient-sphere sphere-3"></div>
+        <div class="particles" id="particles"></div>
+      </div>
+
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <span class="hero-greeting reveal-up">Hello, I'm</span>
+            <h1 class="hero-name reveal-up">Brijesh Parekh</h1>
+            <h2 class="hero-title reveal-up">
+              <span class="title-static">IT Student &</span>
+              <span class="typing-wrapper">
+                <span class="typing-text" id="typingText"></span>
+                <span class="typing-cursor">|</span>
+              </span>
+            </h2>
+            <p class="hero-description reveal-up">
+              Passionate about building scalable web applications and learning
+              modern technologies. Specializing in Laravel development with a
+              focus on clean, efficient code.
+            </p>
+
+            <div class="hero-buttons reveal-up">
+              <a href="#projects" class="btn btn-primary">
+                <i class="fas fa-folder-open"></i>
+                View Projects
+              </a>
+              <a href="#contact" class="btn btn-secondary">
+                <i class="fas fa-paper-plane"></i>
+                Hire Me
+              </a>
+            </div>
+
+            <div class="hero-socials reveal-up">
+              <a
+                href="[github.com](https://github.com/brijeshparekh)"
+                target="_blank"
+                class="social-link"
+                aria-label="GitHub"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+              <a
+                href="[linkedin.com](https://linkedin.com/in/brijeshparekh)"
+                target="_blank"
+                class="social-link"
+                aria-label="LinkedIn"
+              >
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a
+                href="[instagram.com](https://instagram.com/brijeshparekh)"
+                target="_blank"
+                class="social-link"
+                aria-label="Instagram"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="mailto:parekhbrijesh901@gmail.com"
+                class="social-link"
+                aria-label="Email"
+              >
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-image reveal-scale">
+            <div class="image-wrapper">
+              <div class="image-border"></div>
+              <div class="profile-placeholder">
+                <i class="fas fa-user"></i>
+                <span>Your Photo</span>
+              </div>
+              <!-- Replace with your actual image -->
+              <!-- <img src="your-photo.jpg" alt="Brijesh Parekh"> -->
+            </div>
+            <div class="floating-icons">
+              <div class="float-icon icon-1">
+                <i class="fab fa-laravel"></i>
+              </div>
+              <div class="float-icon icon-2"><i class="fab fa-php"></i></div>
+              <div class="float-icon icon-2"><i class="fab fa-java"></i></div>
+              <div class="float-icon icon-3"><i class="fab fa-js"></i></div>
+              <div class="float-icon icon-4"><i class="fab fa-react"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <a href="#about" class="scroll-indicator">
+          <span>Scroll Down</span>
+          <i class="fas fa-chevron-down"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about section" id="about">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <span class="section-subtitle">Get To Know</span>
+          <h2 class="section-title">About Me</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-image reveal-left">
+            <div class="about-img-wrapper">
+              <div class="about-placeholder">
+                <i class="fas fa-code"></i>
+              </div>
+              <!-- <img src="about-image.jpg" alt="About Brijesh"> -->
+            </div>
+            <div class="experience-badge">
+              <span class="badge-number">3+</span>
+              <span class="badge-text">Years of Learning</span>
+            </div>
+          </div>
+
+          <div class="about-content reveal-right">
+            <p class="about-text">
+              I am a passionate <strong>BCA student</strong> from Gujarat,
+              India, with a strong interest in web development and backend
+              technologies. Currently pursuing my degree from
+              <strong>Saurashtra University</strong>, I specialize in
+              <strong>Laravel</strong> and enjoy building real-world
+              applications that solve practical problems.
+            </p>
+            <p class="about-text">
+              My journey in programming started with curiosity and has evolved
+              into a genuine passion for creating efficient, scalable, and
+              user-friendly web applications. I believe in continuous learning
+              and staying updated with the latest industry trends.
+            </p>
+
+            <div class="about-highlights">
+              <div class="highlight-card">
+                <div class="highlight-icon">
+                  <i class="fas fa-lightbulb"></i>
+                </div>
+                <div class="highlight-content">
+                  <h4>Problem Solver</h4>
+                  <p>Analytical approach to complex challenges</p>
+                </div>
+              </div>
+
+              <div class="highlight-card">
+                <div class="highlight-icon">
+                  <i class="fas fa-book-open"></i>
+                </div>
+                <div class="highlight-content">
+                  <h4>Continuous Learner</h4>
+                  <p>Always exploring new technologies</p>
+                </div>
+              </div>
+
+              <div class="highlight-card">
+                <div class="highlight-icon">
+                  <i class="fas fa-code"></i>
+                </div>
+                <div class="highlight-content">
+                  <h4>Clean Code Advocate</h4>
+                  <p>Focus on maintainable & efficient code</p>
+                </div>
+              </div>
+            </div>
+
+            <a href="#contact" class="btn btn-primary">
+              <i class="fas fa-comments"></i>
+              Let's Talk
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="education section" id="education">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <span class="section-subtitle">My Journey</span>
+          <h2 class="section-title">Education</h2>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item reveal-left">
+            <div class="timeline-marker">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div class="timeline-content glass-card">
+              <span class="timeline-date">2023 - 2026</span>
+              <h3 class="timeline-title">
+                Bachelor of Computer Applications (BCA)
+              </h3>
+              <p class="timeline-institution">
+                <i class="fas fa-university"></i>
+                Saurashtra University, Gujarat
+              </p>
+              <p class="timeline-description">
+                Currently pursuing BCA with focus on software development,
+                database management, and web technologies. Actively
+                participating in coding competitions and projects.
+              </p>
+              <span class="timeline-status">Currently Pursuing</span>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal-right">
+            <div class="timeline-marker">
+              <i class="fas fa-school"></i>
+            </div>
+            <div class="timeline-content glass-card">
+              <span class="timeline-date">2023</span>
+              <h3 class="timeline-title">Higher Secondary (12th)</h3>
+              <p class="timeline-institution">
+                <i class="fas fa-flask"></i>
+                Commerce Stream
+              </p>
+              <p class="timeline-description">
+                Completed higher secondary education with Science stream,
+                building strong foundations in mathematics and logical
+                reasoning.
+              </p>
+              <div class="timeline-score">
+                <span class="score-label">Percentile</span>
+                <span class="score-value">86 PR</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal-left">
+            <div class="timeline-marker">
+              <i class="fas fa-book"></i>
+            </div>
+            <div class="timeline-content glass-card">
+              <span class="timeline-date">2021</span>
+              <h3 class="timeline-title">Secondary School (10th)</h3>
+              <p class="timeline-institution">
+                <i class="fas fa-school"></i>
+                Gujarat Board
+              </p>
+              <p class="timeline-description">
+                Completed secondary education with strong academic performance,
+                developing interest in computer science and technology.
+              </p>
+              <div class="timeline-score">
+                <span class="score-label">Percentile</span>
+                <span class="score-value">70 PR</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills section" id="skills">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <span class="section-subtitle">My Expertise</span>
+          <h2 class="section-title">Skills</h2>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Programming -->
+          <div class="skill-category glass-card reveal-up">
+            <h3 class="category-title">
+              <i class="fas fa-code"></i> Programming Languages
+            </h3>
+
+            <div class="skills-row">
+              <div class="skill-card">
+                <i class="devicon-java-plain colored"></i>
+                <h4>Java</h4>
+                <div class="progress-bar">
+                  <div class="progress" style="width: 85%"></div>
+                </div>
+                <span>85%</span>
+              </div>
+
+              <div class="skill-card">
+                <i class="devicon-python-plain colored"></i>
+                <h4>Python</h4>
+                <div class="progress-bar">
+                  <div class="progress" style="width: 70%"></div>
+                </div>
+                <span>70%</span>
+              </div>
+
+              <div class="skill-card">
+                <i class="devicon-javascript-plain colored"></i>
+                <h4>JavaScript</h4>
+                <div class="progress-bar">
+                  <div class="progress" style="width: 75%"></div>
+                </div>
+                <span>75%</span>
+              </div>
+
+              <div class="skill-card">
+                <i class="devicon-kotlin-plain colored"></i>
+                <h4>Kotlin</h4>
+                <div class="progress-bar">
+                  <div class="progress" style="width: 70%"></div>
+                </div>
+                <span>75%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Backend -->
+          <div class="skill-category glass-card reveal-up featured">
+            <h3 class="category-title">
+              <i class="fas fa-server"></i> Backend
+            </h3>
+
+            <div class="skills-row">
+              <div class="skill-card">
+                <i class="devicon-spring-plain colored"></i>
+                <h4>Spring Boot</h4>
+                <div class="progress-bar">
+                  <div class="progress" style="width: 80%"></div>
+                </div>
+                <span>90%</span>
+              </div>
+
+              <div class="skill-card">
+                <i class="devicon-laravel-plain colored"></i>
+                <h4>Laravel</h4>
+                <div class="progress-bar">
+                  <div class="progress" style="width: 90%"></div>
+                </div>
+                <span>90%</span>
+              </div>
+
+              <div class="skill-card">
+                <i class="devicon-php-plain colored"></i>
+                <h4>PHP</h4>
+                <div class="progress-bar">
+                  <div class="progress" style="width: 85%"></div>
+                </div>
+                <span>85%</span>
+              </div>
+
+              <div class="skill-card">
+                <i class="devicon-mysql-plain colored"></i>
+                <h4>MySQL</h4>
+                <div class="progress-bar">
+                  <div class="progress" style="width: 80%"></div>
+                </div>
+                <span>80%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Frontend -->
+          <div class="skill-category glass-card reveal-up">
+            <h3 class="category-title">
+              <i class="fas fa-palette"></i> Frontend
+            </h3>
+
+            <div class="skills-row">
+              <div class="skill-card">
+                <i class="devicon-html5-plain colored"></i>
+                <h4>HTML5</h4>
+                <div class="progress-bar">
+                  <div class="progress" style="width: 90%"></div>
+                </div>
+                <span>90%</span>
+              </div>
+
+              <div class="skill-card">
+                <i class="devicon-css3-plain colored"></i>
+                <h4>CSS3</h4>
+                <div class="progress-bar">
+                  <div class="progress" style="width: 85%"></div>
+                </div>
+                <span>85%</span>
+              </div>
+
+              <div class="skill-card">
+                <i class="devicon-react-original colored"></i>
+                <h4>React</h4>
+                <div class="progress-bar">
+                  <div class="progress" style="width: 60%"></div>
+                </div>
+                <span>60%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tools (UNCHANGED) -->
+          <div class="skill-category glass-card reveal-up">
+            <div class="category-header">
+              <div class="category-icon">
+                <i class="fas fa-tools"></i>
+              </div>
+              <h3 class="category-title">Tools & Others</h3>
+            </div>
+            <div class="tools-grid">
+              <div class="tool-item">
+                <i class="devicon-git-plain colored"></i>
+                <span>Git</span>
+              </div>
+
+              <div class="tool-item">
+                <i class="devicon-github-original light"></i>
+                <span>GitHub</span>
+              </div>
+
+              <div class="tool-item">
+                <i class="devicon-vscode-plain colored"></i>
+                <span>VS Code</span>
+              </div>
+
+              <div class="tool-item">
+                <i class="devicon-linux-plain light"></i>
+                <span>Linux</span>
+              </div>
+
+              <div class="tool-item">
+                <i class="devicon-bash-plain light"></i>
+                <span>Terminal</span>
+              </div>
+
+              <div class="tool-item">
+                <i class="devicon-bootstrap-plain colored"></i>
+                <span>Bootstrap</span>
+              </div>
+
+              <div class="tool-item">
+                <i class="devicon-postman-plain colored"></i>
+                <span>Postman</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience section" id="experience">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <span class="section-subtitle">What I've Done</span>
+          <h2 class="section-title">Experience</h2>
+        </div>
+
+        <div class="experience-content">
+          <div class="experience-card glass-card reveal-up">
+            <div class="exp-header">
+              <div class="exp-icon">
+                <i class="fab fa-laravel"></i>
+              </div>
+              <div class="exp-title-wrapper">
+                <h3 class="exp-title">Laravel Developer</h3>
+                <span class="exp-type">At, <a href="https://ashtavinayaksoftsolution.in/" style="color:blue;" target="_blank">Ashtavinayak software solutions.</a></span>
+              </div>
+              <span class="exp-badge">DEC 2025 - PRESENT</span>
+            </div>
+
+            <div class="exp-body">
+              <p class="exp-description">
+                Focused on building practical web applications using Laravel
+                framework, developing strong backend development skills through
+                hands-on projects.
+              </p>
+
+              <div class="exp-achievements">
+                <h4>Key Accomplishments</h4>
+                <ul class="achievement-list">
+                  <li>
+                    <i class="fas fa-check-circle"></i>
+                    <span
+                      >Developed dynamic web applications using Laravel MVC
+                      architecture</span
+                    >
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle"></i>
+                    <span
+                      >Built secure authentication systems with login/register
+                      functionality</span
+                    >
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle"></i>
+                    <span>Implemented CRUD operations and RESTful APIs</span>
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle"></i>
+                    <span
+                      >Designed and integrated MySQL databases with Eloquent
+                      ORM</span
+                    >
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle"></i>
+                    <span
+                      >Created responsive UI using Blade templating &
+                      Bootstrap</span
+                    >
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle"></i>
+                    <span
+                      >Implemented form validation, middleware, and AJAX
+                      requests</span
+                    >
+                  </li>
+                </ul>
+              </div>
+
+              <div class="exp-tech">
+                <h4>Technologies Used</h4>
+                <div class="tech-tags">
+                  <span class="tech-tag">Laravel</span>
+                  <span class="tech-tag">PHP</span>
+                  <span class="tech-tag">MySQL</span>
+                  <span class="tech-tag">Blade</span>
+                  <span class="tech-tag">Eloquent ORM</span>
+                  <span class="tech-tag">Bootstrap</span>
+                  <span class="tech-tag">AJAX</span>
+                  <span class="tech-tag">jQuery</span>
+                  <span class="tech-tag">REST API</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Additional Experience Cards -->
+          <!--<div class="mini-experience-grid">
+            <div class="mini-exp-card glass-card reveal-up">
+              <div class="mini-exp-icon">
+                <i class="fab fa-java"></i>
+              </div>
+              <h4>Java Development</h4>
+              <p>Built desktop applications and practiced DSA with Java</p>
+            </div>
+
+            <div class="mini-exp-card glass-card reveal-up">
+              <div class="mini-exp-icon">
+                <i class="fas fa-database"></i>
+              </div>
+              <h4>Database Design</h4>
+              <p>Designed normalized databases with MySQL and JDBC</p>
+            </div>
+
+            <div class="mini-exp-card glass-card reveal-up">
+              <div class="mini-exp-icon">
+                <i class="fab fa-react"></i>
+              </div>
+              <h4>Frontend Projects</h4>
+              <p>Created interactive web apps using React and vanilla JS</p>
+            </div>
+          </div>
+        </div>
+      </div>-->
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects section" id="projects">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <span class="section-subtitle">My Work</span>
+          <h2 class="section-title">Projects</h2>
+        </div>
+
+        <div class="projects-filter reveal-up">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="web">Web</button>
+          <button class="filter-btn" data-filter="java">Java</button>
+          <button class="filter-btn" data-filter="react">React</button>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project 1: Eventify -->
+          <div class="project-card glass-card reveal-up" data-category="web">
+            <div class="project-image">
+              <div class="project-placeholder">
+                <i class="fas fa-ring"></i>
+              </div>
+              <div class="project-overlay">
+                <div class="project-links">
+                  <a href="#" class="project-link" title="View Code">
+                    <i class="fab fa-github"></i>
+                  </a>
+                  <a href="#" class="project-link" title="Live Demo">
+                    <i class="fas fa-external-link-alt"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="project-content">
+              <span class="project-category">Web Application</span>
+              <h3 class="project-title">Eventify</h3>
+              <p class="project-subtitle">Wedding Management System</p>
+              <p class="project-description">
+                A comprehensive wedding management platform for managing
+                services, bookings, vendors, and event planning with an
+                intuitive interface.
+              </p>
+              <div class="project-tech">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+                <span>PHP</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: Task Management -->
+          <div class="project-card glass-card reveal-up" data-category="react">
+            <div class="project-image">
+              <div class="project-placeholder">
+                <i class="fas fa-tasks"></i>
+              </div>
+              <div class="project-overlay">
+                <div class="project-links">
+                  <a href="#" class="project-link" title="View Code">
+                    <i class="fab fa-github"></i>
+                  </a>
+                  <a href="#" class="project-link" title="Live Demo">
+                    <i class="fas fa-external-link-alt"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="project-content">
+              <span class="project-category">React App</span>
+              <h3 class="project-title">Task Manager</h3>
+              <p class="project-subtitle">Todo Application</p>
+              <p class="project-description">
+                A feature-rich task management app with add, edit, delete
+                functionality using React hooks and local storage for data
+                persistence.
+              </p>
+              <div class="project-tech">
+                <span>React</span>
+                <span>JavaScript</span>
+                <span>CSS</span>
+                <span>LocalStorage</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3: Weather App -->
+          <div class="project-card glass-card reveal-up" data-category="web">
+            <div class="project-image">
+              <div class="project-placeholder">
+                <i class="fas fa-cloud-sun"></i>
+              </div>
+              <div class="project-overlay">
+                <div class="project-links">
+                  <a href="#" class="project-link" title="View Code">
+                    <i class="fab fa-github"></i>
+                  </a>
+                  <a href="#" class="project-link" title="Live Demo">
+                    <i class="fas fa-external-link-alt"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="project-content">
+              <span class="project-category">API Integration</span>
+              <h3 class="project-title">Weather App</h3>
+              <p class="project-subtitle">Real-time Weather Data</p>
+              <p class="project-description">
+                A weather application that fetches real-time weather data using
+                external APIs with location search and forecast display.
+              </p>
+              <div class="project-tech">
+                <span>JavaScript</span>
+                <span>REST API</span>
+                <span>HTML</span>
+                <span>CSS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4: Student Management -->
+          <div class="project-card glass-card reveal-up" data-category="java">
+            <div class="project-image">
+              <div class="project-placeholder">
+                <i class="fas fa-user-graduate"></i>
+              </div>
+              <div class="project-overlay">
+                <div class="project-links">
+                  <a href="#" class="project-link" title="View Code">
+                    <i class="fab fa-github"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="project-content">
+              <span class="project-category">Desktop Application</span>
+              <h3 class="project-title">Student Management</h3>
+              <p class="project-subtitle">Database System</p>
+              <p class="project-description">
+                A complete student management system with CRUD operations,
+                database connectivity, and user-friendly interface.
+              </p>
+              <div class="project-tech">
+                <span>Java</span>
+                <span>MySQL</span>
+                <span>JDBC</span>
+                <span>Swing</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 5: Auth System -->
+          <div class="project-card glass-card reveal-up" data-category="web">
+            <div class="project-image">
+              <div class="project-placeholder">
+                <i class="fas fa-lock"></i>
+              </div>
+              <div class="project-overlay">
+                <div class="project-links">
+                  <a href="#" class="project-link" title="View Code">
+                    <i class="fab fa-github"></i>
+                  </a>
+                  <a href="#" class="project-link" title="Live Demo">
+                    <i class="fas fa-external-link-alt"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="project-content">
+              <span class="project-category">Web Security</span>
+              <h3 class="project-title">Auth System</h3>
+              <p class="project-subtitle">Login & Registration</p>
+              <p class="project-description">
+                A secure authentication system with login, registration,
+                password hashing, session management, and validation.
+              </p>
+              <div class="project-tech">
+                <span>PHP</span>
+                <span>MySQL</span>
+                <span>Sessions</span>
+                <span>Security</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="projects-cta reveal-up">
+          <a
+            href="[github.com](https://github.com/brijeshparekh)"
+            target="_blank"
+            class="btn btn-secondary"
+          >
+            <i class="fab fa-github"></i>
+            View More on GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact section" id="contact">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <span class="section-subtitle">Get In Touch</span>
+          <h2 class="section-title">Contact Me</h2>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info reveal-left">
+            <h3>Let's Work Together</h3>
+            <p>
+              I'm currently looking for opportunities as a Laravel Developer.
+              Whether you have a project in mind or just want to connect, feel
+              free to reach out!
+            </p>
+
+            <div class="contact-details">
+              <div class="contact-item glass-card">
+                <div class="contact-icon">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div class="contact-text">
+                  <span class="contact-label">Email</span>
+                  <a href="mailto:parekhbrijesh901@gmail.com"
+                    >parekhbrijesh901@gmail.com</a
+                  >
+                </div>
+              </div>
+
+              <div class="contact-item glass-card">
+                <div class="contact-icon">
+                  <i class="fas fa-phone"></i>
+                </div>
+                <div class="contact-text">
+                  <span class="contact-label">Phone</span>
+                  <a href="tel:+916359061142">+91 6359061142</a>
+                </div>
+              </div>
+
+              <div class="contact-item glass-card">
+                <div class="contact-icon">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="contact-text">
+                  <span class="contact-label">Location</span>
+                  <span>Gujarat, India</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-socials">
+              <span>Find me on</span>
+              <div class="social-links">
+                <a
+                  href="https://github.com/Parekhbrijesh13"
+                  target="_blank"
+                  aria-label="GitHub"
+                >
+                  <i class="fab fa-github"></i>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/parekh-brijesh-338b06366"
+                  target="_blank"
+                  aria-label="LinkedIn"
+                >
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a
+                  href="[instagram.com](https://instagram.com/brijeshparekh)"
+                  target="_blank"
+                  aria-label="Instagram"
+                >
+                  <i class="fab fa-instagram"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form-wrapper reveal-right">
+            <form class="contact-form glass-card" id="contactForm">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  placeholder="John Doe"
+                />
+                <span class="form-error"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  placeholder="john@example.com"
+                />
+                <span class="form-error"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  required
+                  placeholder="Project Discussion"
+                />
+                <span class="form-error"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  required
+                  placeholder="Tell me about your project..."
+                ></textarea>
+                <span class="form-error"></span>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-submit">
+                <span class="btn-text">Send Message</span>
+                <span class="btn-loading">
+                  <i class="fas fa-spinner fa-spin"></i>
+                  Sending...
+                </span>
+                <i class="fas fa-paper-plane"></i>
+              </button>
+
+              <div class="form-message" id="formMessage"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <a href="#home" class="footer-logo">
+              <span>BP</span>
+            </a>
+            <p>Building the web, one line of code at a time.</p>
+          </div>
+
+          <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#about">About</a></li>
+              <li><a href="#skills">Skills</a></li>
+              <li><a href="#projects">Projects</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-social">
+            <h4>Connect</h4>
+            <div class="social-links">
+              <a
+                href="[github.com](https://github.com/brijeshparekh)"
+                target="_blank"
+                aria-label="GitHub"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+              <a
+                href="[linkedin.com](https://linkedin.com/in/brijeshparekh)"
+                target="_blank"
+                aria-label="LinkedIn"
+              >
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a
+                href="[instagram.com](https://instagram.com/brijeshparekh)"
+                target="_blank"
+                aria-label="Instagram"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="mailto:parekhbrijesh901@gmail.com" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; <span id="currentYear"></span> Brijesh Parekh. All rights
+            reserved.
+          </p>
+          <p>
+            Made with <i class="fas fa-heart"></i> using HTML, CSS & JavaScript
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script src="main.js"></script>
+  </body>
+</html>
