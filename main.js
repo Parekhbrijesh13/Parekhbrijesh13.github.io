@@ -330,22 +330,27 @@ function initializeContactForm() {
         submitBtn.classList.add('loading');
         submitBtn.disabled = true;
         
-        // Simulate form submission (replace with actual backend endpoint)
+        // Submit to Formspree
         try {
-            // In production, replace this with actual form submission
-            await simulateFormSubmission(data);
+            const response = await fetch(form.action, {
+                method: 'POST',
+                headers: { 'Accept': 'application/json' },
+                body: new FormData(form)
+            });
             
-            // Show success message
-            formMessage.textContent = '🎉 Message sent successfully! I\'ll get back to you soon.';
-            formMessage.className = 'form-message success';
-            formMessage.style.display = 'block';
-            
-            // Reset form
-            form.reset();
-            
+            if (response.ok) {
+                // Show success message
+                formMessage.textContent = '🎉 Message sent successfully! I\'ll get back to you soon.';
+                formMessage.className = 'form-message success';
+                formMessage.style.display = 'block';
+                // Reset form
+                form.reset();
+            } else {
+                throw new Error('Submission failed');
+            }
         } catch (error) {
             // Show error message
-            formMessage.textContent = 'Oops! Something went wrong. Please try again.';
+            formMessage.textContent = 'Oops! Something went wrong. Please try again or email me directly.';
             formMessage.className = 'form-message error';
             formMessage.style.display = 'block';
         } finally {
@@ -366,23 +371,6 @@ function initializeContactForm() {
     function isValidEmail(email) {
         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return re.test(email);
-    }
-    
-    function simulateFormSubmission(data) {
-        return new Promise((resolve, reject) => {
-            // Simulate network delay
-            setTimeout(() => {
-                // Log form data (for testing)
-                console.log('Form submitted:', data);
-                
-                // Randomly succeed or fail for demo (remove in production)
-                if (Math.random() > 0.1) {
-                    resolve();
-                } else {
-                    reject(new Error('Submission failed'));
-                }
-            }, 1500);
-        });
     }
 }
 
