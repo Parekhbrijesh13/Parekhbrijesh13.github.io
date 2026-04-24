@@ -888,7 +888,13 @@
           </div>
 
           <div class="contact-form-wrapper reveal-right">
-            <form class="contact-form glass-card" id="contactForm" action="https://formspree.io/f/xpwrjkbd" method="POST">
+            <form class="contact-form glass-card" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+  
+              <input type="hidden" name="access_key" value="24232e74-bae5-4cb6-b346-863bd39c2475">
+              <input type="hidden" name="subject" value="New Contact Form Message - Portfolio">
+              <input type="hidden" name="from_name" value="Brijesh Portfolio">
+              <input type="checkbox" name="botcheck" style="display:none">
+
               <div class="form-group">
                 <label for="name">Full Name</label>
                 <input
@@ -914,11 +920,11 @@
               </div>
 
               <div class="form-group">
-                <label for="subject">Subject</label>
+                <label for="user_subject">Subject</label>
                 <input
                   type="text"
-                  id="subject"
-                  name="subject"
+                  id="user_subject"
+                  name="user_subject"
                   required
                   placeholder="Project Discussion"
                 />
@@ -947,6 +953,7 @@
               </button>
 
               <div class="form-message" id="formMessage"></div>
+
             </form>
           </div>
         </div>

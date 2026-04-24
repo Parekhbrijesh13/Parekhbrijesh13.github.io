@@ -330,15 +330,24 @@ function initializeContactForm() {
         submitBtn.classList.add('loading');
         submitBtn.disabled = true;
         
-        // Submit to Formspree
+        // Submit to Web3Forms
         try {
-            const response = await fetch(form.action, {
+            const formData = new FormData(form);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+
+            const response = await fetch('https://api.web3forms.com/submit', {
                 method: 'POST',
-                headers: { 'Accept': 'application/json' },
-                body: new FormData(form)
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
             });
-            
-            if (response.ok) {
+
+            const result = await response.json();
+
+            if (result.success) {
                 // Show success message
                 formMessage.textContent = '🎉 Message sent successfully! I\'ll get back to you soon.';
                 formMessage.className = 'form-message success';
@@ -346,11 +355,11 @@ function initializeContactForm() {
                 // Reset form
                 form.reset();
             } else {
-                throw new Error('Submission failed');
+                throw new Error(result.message || 'Submission failed');
             }
         } catch (error) {
             // Show error message
-            formMessage.textContent = 'Oops! Something went wrong. Please try again or email me directly.';
+            formMessage.textContent = 'Oops! Something went wrong. Please try again or email me directly at parekhbrijesh901@gmail.com';
             formMessage.className = 'form-message error';
             formMessage.style.display = 'block';
         } finally {
