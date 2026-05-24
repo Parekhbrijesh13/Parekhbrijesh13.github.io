@@ -1,391 +1,1144 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grocery Image Gallery</title>
-  <style>
-    :root {
-      --page: #f7f9f2;
-      --ink: #172017;
-      --muted: #60705d;
-      --panel: #ffffff;
-      --line: #dfe7d8;
-      --accent: #2f7d4d;
-      --accent-strong: #205c37;
-      --gold: #f3c34a;
-      --shadow: 0 18px 45px rgba(23, 32, 23, 0.12);
-    }
+<!doctype html>
+<head lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallary</title>
 
+
+  <style>
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #f4f7ff;
+      --bg-soft: #edf4ff;
+      --surface: rgba(255, 255, 255, 0.82);
+      --surface-strong: rgba(255, 255, 255, 0.94);
+      --border: rgba(88, 102, 126, 0.14);
+      --border-strong: rgba(88, 102, 126, 0.22);
+
+      --text: #172033;
+      --text-soft: #5e6980;
+      --text-faint: #8c95a8;
+
+      --primary: #6c63ff;
+      --primary-2: #36a8ff;
+      --accent: #ff9f43;
+      --success: #19b37d;
+
+      --shadow-sm: 0 8px 20px rgba(16, 24, 40, 0.06);
+      --shadow-md: 0 16px 40px rgba(16, 24, 40, 0.1);
+      --shadow-lg: 0 28px 70px rgba(16, 24, 40, 0.16);
+
+      --radius-sm: 12px;
+      --radius-md: 18px;
+      --radius-lg: 24px;
+      --radius-xl: 28px;
     }
 
     body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--ink);
       background:
-        linear-gradient(135deg, rgba(47, 125, 77, 0.12), transparent 34%),
-        linear-gradient(225deg, rgba(243, 195, 74, 0.16), transparent 38%),
-        var(--page);
+        radial-gradient(
+          circle at 10% 0%,
+          rgba(108, 99, 255, 0.1),
+          transparent 28%
+        ),
+        radial-gradient(
+          circle at 100% 10%,
+          rgba(54, 168, 255, 0.12),
+          transparent 24%
+        ),
+        radial-gradient(
+          circle at 0% 100%,
+          rgba(255, 159, 67, 0.1),
+          transparent 26%
+        ),
+        linear-gradient(180deg, #f8faff 0%, #eef5ff 100%);
     }
 
-    .page {
-      width: min(1180px, calc(100% - 32px));
-      margin: 0 auto;
-      padding: 36px 0 48px;
-    }
-
-    .gallery-header {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 20px;
-      padding-bottom: 24px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 2rem;
-      line-height: 1.15;
-      letter-spacing: 0;
-    }
-
-    .subtitle {
-      margin: 8px 0 0;
-      color: var(--muted);
-      font-size: 1rem;
-      line-height: 1.5;
-    }
-
-    .count {
-      flex: 0 0 auto;
-      min-width: 92px;
-      padding: 10px 14px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.76);
-      color: var(--accent-strong);
-      font-weight: 700;
-      text-align: center;
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 18px;
-      padding-top: 28px;
-    }
-
-    .gallery-card {
-      margin: 0;
+    .gal {
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      padding: 1.5rem;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.86),
+        rgba(255, 255, 255, 0.78)
+      );
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      box-shadow: var(--shadow-lg);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      position: relative;
       overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--panel);
-      box-shadow: var(--shadow);
     }
 
-    .image-button {
-      display: block;
+    .gal::before,
+    .gal::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(36px);
+      opacity: 0.45;
+      pointer-events: none;
+    }
+
+    .gal::before {
+      width: 220px;
+      height: 220px;
+      top: -70px;
+      right: -40px;
+      background: linear-gradient(135deg, #a49bff, #79d1ff);
+    }
+
+    .gal::after {
+      width: 180px;
+      height: 180px;
+      bottom: -70px;
+      left: -40px;
+      background: linear-gradient(135deg, #ffd2a6, #ffe7cd);
+    }
+
+    .gal > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .gal-hero {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      align-items: end;
+      margin-bottom: 1.25rem;
+      padding: 1.1rem 1.15rem;
+      border-radius: 22px;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(108, 99, 255, 0.1),
+          rgba(54, 168, 255, 0.09)
+        ),
+        rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .gal-hero-left h1 {
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .gal-hero-left h1 .hero-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: #fff;
+      box-shadow: 0 14px 28px rgba(108, 99, 255, 0.24);
+      font-size: 20px;
+    }
+
+    .gal-hero-left p {
+      margin-top: 8px;
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    .gal-stats {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .stat-pill {
+      padding: 9px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.82);
+      box-shadow: var(--shadow-sm);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-soft);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      white-space: nowrap;
+    }
+
+    .stat-pill i {
+      color: var(--primary);
+    }
+
+    .gal-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      padding: 12px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(14px);
+    }
+
+    .gal-search {
+      flex: 1;
+      min-width: 180px;
+      max-width: 260px;
+      position: relative;
+    }
+
+    .gal-search input {
       width: 100%;
-      padding: 0;
-      border: 0;
+      font-size: 13px;
+      padding: 11px 12px 11px 38px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.95);
+      color: var(--text);
+      outline: none;
+      transition: 0.18s ease;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    }
+
+    .gal-search input::placeholder {
+      color: #9aa3b5;
+    }
+
+    .gal-search input:focus {
+      border-color: rgba(108, 99, 255, 0.35);
+      box-shadow:
+        0 0 0 4px rgba(108, 99, 255, 0.08),
+        0 10px 24px rgba(108, 99, 255, 0.08);
+    }
+
+    .gal-search .s-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 15px;
+      color: var(--text-faint);
+      pointer-events: none;
+    }
+
+    .tag-filters {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
+
+    .tf-btn {
+      padding: 8px 13px;
+      border-radius: 999px;
+      border: 1px solid rgba(110, 122, 146, 0.14);
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--text-soft);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.16s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 6px 14px rgba(15, 23, 42, 0.04);
+    }
+
+    .tf-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 20px rgba(15, 23, 42, 0.08);
+      border-color: rgba(108, 99, 255, 0.18);
+    }
+
+    .tf-btn.active {
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 14px 26px rgba(108, 99, 255, 0.24);
+    }
+
+    .tf-btn .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .view-toggle {
+      display: flex;
+      margin-left: auto;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(110, 122, 146, 0.14);
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 6px 14px rgba(15, 23, 42, 0.04);
+    }
+
+    .vt-btn {
+      padding: 9px 12px;
       background: transparent;
-      cursor: zoom-in;
+      border: none;
+      cursor: pointer;
+      color: var(--text-faint);
+      font-size: 16px;
+      transition: 0.15s ease;
     }
 
-    .gallery-card img {
-      display: block;
-      width: 100%;
+    .vt-btn.active {
+      background: linear-gradient(
+        135deg,
+        rgba(108, 99, 255, 0.12),
+        rgba(54, 168, 255, 0.12)
+      );
+      color: var(--primary);
+    }
+
+    .g-count-bar {
+      font-size: 12px;
+      color: var(--text-soft);
+      font-weight: 600;
+      margin-bottom: 12px;
+      padding-left: 2px;
+    }
+
+    .gal-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .gal-grid.view-grid {
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    }
+
+    .gal-grid.view-list {
+      grid-template-columns: 1fr;
+    }
+
+    .g-card {
+      border-radius: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.92);
+      background: var(--surface-strong);
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .g-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.16),
+        transparent 22%
+      );
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .g-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(108, 99, 255, 0.18);
+    }
+
+    .g-img-wrap {
       aspect-ratio: 16 / 10;
+      background: linear-gradient(135deg, #eef3ff, #f8fbff);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .view-list .g-card {
+      display: flex;
+      align-items: stretch;
+    }
+
+    .view-list .g-img-wrap {
+      width: 180px;
+      aspect-ratio: auto;
+      flex-shrink: 0;
+    }
+
+    .g-img-wrap img {
+      width: 100%;
+      height: 100%;
+      display: block;
       object-fit: cover;
-      background: #e7ede0;
-      transition: transform 180ms ease;
+      transition: transform 0.28s ease;
     }
 
-    .gallery-card:focus-within img,
-    .gallery-card:hover img {
-      transform: scale(1.025);
+    .g-card:hover .g-img-wrap img {
+      transform: scale(1.05);
     }
 
-    figcaption {
+    .g-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(9, 16, 29, 0.34),
+        rgba(9, 16, 29, 0.04) 48%
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.18s ease;
+    }
+
+    .g-card:hover .g-img-overlay {
+      background: linear-gradient(
+        to top,
+        rgba(9, 16, 29, 0.22),
+        rgba(108, 99, 255, 0.1) 48%
+      );
+    }
+
+    .g-zoom-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.18);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      opacity: 0;
+      transform: scale(0.88);
+      transition: 0.18s ease;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.16);
+    }
+
+    .g-card:hover .g-zoom-icon {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .g-body {
+      padding: 13px 14px;
+      border-top: 1px solid rgba(88, 102, 126, 0.08);
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 10px;
-      min-height: 58px;
-      padding: 12px 14px;
-      border-top: 1px solid var(--line);
-      color: var(--ink);
-      font-size: 0.95rem;
-      font-weight: 700;
+      position: relative;
+      z-index: 2;
+    }
+
+    .view-list .g-body {
+      border-top: none;
+      border-left: 1px solid rgba(88, 102, 126, 0.08);
+      flex: 1;
+      padding: 16px 18px;
+    }
+
+    .g-name {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
       line-height: 1.3;
     }
 
-    .tag {
-      flex: 0 0 auto;
-      padding: 4px 8px;
-      border-radius: 999px;
-      background: rgba(47, 125, 77, 0.1);
-      color: var(--accent-strong);
-      font-size: 0.78rem;
-      font-weight: 700;
+    .g-name i {
+      color: var(--primary);
+      font-size: 15px;
     }
 
-    .lightbox {
+    .g-tag {
+      font-size: 11px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-weight: 800;
+      flex-shrink: 0;
+      border: 1px solid transparent;
+    }
+
+    .tag-Home {
+      background: linear-gradient(135deg, #e3f1ff, #f0f8ff);
+      color: #1361a8;
+      border-color: #cbe5ff;
+    }
+
+    .tag-Store {
+      background: linear-gradient(135deg, #e6f7df, #f2fbe9);
+      color: #3b7e17;
+      border-color: #d1efbf;
+    }
+
+    .tag-Info {
+      background: linear-gradient(135deg, #dcf8f0, #eefcf7);
+      color: #0e7a60;
+      border-color: #c4f0e2;
+    }
+
+    .tag-Deals {
+      background: linear-gradient(135deg, #fff0dc, #fff8ec);
+      color: #9a5a09;
+      border-color: #ffdca8;
+    }
+
+    .tag-Order {
+      background: linear-gradient(135deg, #ede8ff, #f6f3ff);
+      color: #5d49cf;
+      border-color: #ddd4ff;
+    }
+
+    .tag-Admin {
+      background: linear-gradient(135deg, #ffe8df, #fff3ef);
+      color: #be4a21;
+      border-color: #ffd2c1;
+    }
+
+    .dot-Home {
+      background: #3f9cff;
+    }
+    .dot-Store {
+      background: #66b22c;
+    }
+    .dot-Info {
+      background: #1cb58a;
+    }
+    .dot-Deals {
+      background: #f0a13d;
+    }
+    .dot-Order {
+      background: #826cff;
+    }
+    .dot-Admin {
+      background: #ff7a49;
+    }
+
+    .gal-empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 3.5rem 1rem;
+      color: var(--text-faint);
+      font-size: 13px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.62);
+      border: 1px dashed rgba(110, 122, 146, 0.22);
+    }
+
+    .gal-empty i {
+      display: block;
+      font-size: 30px;
+      margin-bottom: 10px;
+      color: var(--primary);
+    }
+
+    .lb-backdrop {
       position: fixed;
       inset: 0;
-      z-index: 10;
+      background:
+        radial-gradient(
+          circle at top,
+          rgba(108, 99, 255, 0.16),
+          transparent 30%
+        ),
+        rgba(9, 12, 22, 0.78);
       display: none;
       align-items: center;
       justify-content: center;
       padding: 24px;
-      background: rgba(7, 12, 8, 0.84);
+      z-index: 999;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
     }
 
-    .lightbox.is-open {
+    .lb-backdrop.open {
       display: flex;
     }
 
-    .lightbox-inner {
-      width: min(1120px, 100%);
+    .lb-box {
+      width: min(920px, 100%);
+      padding: 18px;
+      border-radius: 28px;
+      background: rgba(18, 23, 36, 0.62);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 32px 80px rgba(0, 0, 0, 0.35);
     }
 
-    .lightbox-top {
+    .lb-topbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 12px;
-      color: #ffffff;
+      gap: 14px;
+      margin-bottom: 14px;
     }
 
-    .lightbox-title {
-      margin: 0;
-      font-size: 1rem;
-      line-height: 1.4;
-      font-weight: 700;
+    .lb-name {
+      font-size: 16px;
+      font-weight: 800;
+      color: #fff;
     }
 
-    .close-button {
-      flex: 0 0 auto;
-      width: 40px;
-      height: 40px;
-      border: 1px solid rgba(255, 255, 255, 0.45);
+    .lb-sub {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.62);
+      margin-top: 4px;
+    }
+
+    .lb-close {
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.12);
-      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
       cursor: pointer;
-      font-size: 1.5rem;
-      line-height: 1;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.16s ease;
     }
 
-    .lightbox img {
-      display: block;
+    .lb-close:hover {
+      background: rgba(255, 255, 255, 0.16);
+      transform: rotate(90deg);
+    }
+
+    .lb-img {
       width: 100%;
-      max-height: 82vh;
+      max-height: 70vh;
+      display: block;
       object-fit: contain;
-      border-radius: 8px;
-      background: #ffffff;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #ffffff, #f3f6ff);
     }
 
-    @media (max-width: 680px) {
-      .page {
-        width: min(100% - 20px, 1180px);
-        padding-top: 24px;
-      }
+    .lb-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
 
-      .gallery-header {
-        display: block;
-      }
+    .lb-nav button {
+      padding: 9px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.08);
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: 0.16s ease;
+    }
 
-      h1 {
-        font-size: 1.55rem;
-      }
+    .lb-nav button:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-1px);
+    }
 
-      .count {
-        display: inline-block;
-        margin-top: 16px;
-      }
+    .lb-dots {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
 
-      .gallery-grid {
+    .lb-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.28);
+      cursor: pointer;
+      transition: 0.14s ease;
+    }
+
+    .lb-dot.cur {
+      width: 22px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #ffffff, #acd6ff);
+    }
+
+    .lb-tag {
+      font-size: 11px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-weight: 800;
+    }
+
+    @media (max-width: 880px) {
+      .gal-hero {
         grid-template-columns: 1fr;
       }
 
-      .lightbox {
-        padding: 12px;
+      .gal-stats {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .gal {
+        padding: 1rem;
+        border-radius: 22px;
+      }
+
+      .gal-hero-left h1 {
+        font-size: 23px;
+      }
+
+      .gal-toolbar {
+        padding: 10px;
+      }
+
+      .gal-search {
+        max-width: 100%;
+        width: 100%;
+      }
+
+      .view-toggle {
+        margin-left: 0;
+      }
+
+      .gal-grid.view-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      }
+
+      .view-list .g-card {
+        flex-direction: column;
+      }
+
+      .view-list .g-img-wrap {
+        width: 100%;
+        aspect-ratio: 16 / 10;
+      }
+
+      .view-list .g-body {
+        border-left: none;
+        border-top: 1px solid rgba(88, 102, 126, 0.08);
+      }
+
+      .lb-box {
+        padding: 14px;
+        border-radius: 20px;
       }
     }
   </style>
-</head>
-<body>
-  <main class="page">
-    <header class="gallery-header">
-      <div>
-        <h1>Grocery Image Gallery</h1>
-        <p class="subtitle">Screenshots from the grocery website pages.</p>
+  </head>
+
+  <body>
+
+  <h2 class="sr-only">
+    Grocery website screenshot gallery — 15 pages across 6 categories
+  </h2>
+
+  <div class="gal">
+    <div class="gal-hero">
+      <div class="gal-hero-left">
+        <h1>
+          <span class="hero-icon">
+            <i class="ti ti-photo" aria-hidden="true"></i>
+          </span>
+          Grocery Page Gallery
+        </h1>
+        <p>
+          Explore storefront, offers, checkout flow, and admin dashboard screens
+        </p>
       </div>
-      <div class="count">15 Images</div>
-    </header>
 
-    <section class="gallery-grid" aria-label="Grocery screenshots">
-      <figure class="gallery-card">
-        <button class="image-button" type="button" data-title="Home Page" data-src="images-ss/screencapture-127-0-0-1-8000-2026-05-19-12_45_09.png">
-          <img src="images-ss/screencapture-127-0-0-1-8000-2026-05-19-12_45_09.png" alt="Home page screenshot" loading="lazy">
-        </button>
-        <figcaption>Home Page <span class="tag">Home</span></figcaption>
-      </figure>
-
-      <figure class="gallery-card">
-        <button class="image-button" type="button" data-title="Shop Page" data-src="images-ss/screencapture-127-0-0-1-8000-home-shop-2026-05-19-12_45_42.png">
-          <img src="images-ss/screencapture-127-0-0-1-8000-home-shop-2026-05-19-12_45_42.png" alt="Shop page screenshot" loading="lazy">
-        </button>
-        <figcaption>Shop Page <span class="tag">Store</span></figcaption>
-      </figure>
-
-      <figure class="gallery-card">
-        <button class="image-button" type="button" data-title="About Page" data-src="images-ss/screencapture-127-0-0-1-8000-home-about-2026-05-19-12_46_03.png">
-          <img src="images-ss/screencapture-127-0-0-1-8000-home-about-2026-05-19-12_46_03.png" alt="About page screenshot" loading="lazy">
-        </button>
-        <figcaption>About Page <span class="tag">Info</span></figcaption>
-      </figure>
-
-      <figure class="gallery-card">
-        <button class="image-button" type="button" data-title="Contact Page" data-src="images-ss/screencapture-127-0-0-1-8000-home-contact-2026-05-19-12_46_22.png">
-          <img src="images-ss/screencapture-127-0-0-1-8000-home-contact-2026-05-19-12_46_22.png" alt="Contact page screenshot" loading="lazy">
-        </button>
-        <figcaption>Contact Page <span class="tag">Info</span></figcaption>
-      </figure>
-
-      <figure class="gallery-card">
-        <button class="image-button" type="button" data-title="Today Offers Page" data-src="images-ss/screencapture-127-0-0-1-8000-home-today-offers-2026-05-19-12_46_41.png">
-          <img src="images-ss/screencapture-127-0-0-1-8000-home-today-offers-2026-05-19-12_46_41.png" alt="Today offers page screenshot" loading="lazy">
-        </button>
-        <figcaption>Today Offers <span class="tag">Deals</span></figcaption>
-      </figure>
-
-      <figure class="gallery-card">
-        <button class="image-button" type="button" data-title="Cart Page" data-src="images-ss/screencapture-127-0-0-1-8000-cart-2026-05-19-12_48_06.png">
-          <img src="images-ss/screencapture-127-0-0-1-8000-cart-2026-05-19-12_48_06.png" alt="Cart page screenshot" loading="lazy">
-        </button>
-        <figcaption>Cart Page <span class="tag">Order</span></figcaption>
-      </figure>
-
-      <figure class="gallery-card">
-        <button class="image-button" type="button" data-title="Checkout Success Page" data-src="images-ss/screencapture-127-0-0-1-8000-checkout-success-2-2026-05-19-12_48_48.png">
-          <img src="images-ss/screencapture-127-0-0-1-8000-checkout-success-2-2026-05-19-12_48_48.png" alt="Checkout success page screenshot" loading="lazy">
-        </button>
-        <figcaption>Checkout Success <span class="tag">Order</span></figcaption>
-      </figure>
-
-      <figure class="gallery-card">
-        <button class="image-button" type="button" data-title="Admin Orders Page" data-src="images-ss/screencapture-127-0-0-1-8000-admin-orders-2026-05-19-12_40_09.png">
-          <img src="images-ss/screencapture-127-0-0-1-8000-admin-orders-2026-05-19-12_40_09.png" alt="Admin orders page screenshot" loading="lazy">
-        </button>
-        <figcaption>Admin Orders <span class="tag">Admin</span></figcaption>
-      </figure>
-
-      <figure class="gallery-card">
-        <button class="image-button" type="button" data-title="Admin Customers Page" data-src="images-ss/screencapture-127-0-0-1-8000-admin-customers-2026-05-19-12_40_30.png">
-          <img src="images-ss/screencapture-127-0-0-1-8000-admin-customers-2026-05-19-12_40_30.png" alt="Admin customers page screenshot" loading="lazy">
-        </button>
-        <figcaption>Admin Customers <span class="tag">Admin</span></figcaption>
-      </figure>
-
-      <figure class="gallery-card">
-        <button class="image-button" type="button" data-title="Admin Products Page" data-src="images-ss/screencapture-127-0-0-1-8000-admin-products-2026-05-19-12_40_42.png">
-          <img src="images-ss/screencapture-127-0-0-1-8000-admin-products-2026-05-19-12_40_42.png" alt="Admin products page screenshot" loading="lazy">
-        </button>
-        <figcaption>Admin Products <span class="tag">Admin</span></figcaption>
-      </figure>
-
-      <figure class="gallery-card">
-        <button class="image-button" type="button" data-title="Admin Product Create Page" data-src="images-ss/screencapture-127-0-0-1-8000-admin-products-create-2026-05-19-12_40_55.png">
-          <img src="images-ss/screencapture-127-0-0-1-8000-admin-products-create-2026-05-19-12_40_55.png" alt="Admin product create page screenshot" loading="lazy">
-        </button>
-        <figcaption>Add Product <span class="tag">Admin</span></figcaption>
-      </figure>
-
-      <figure class="gallery-card">
-        <button class="image-button" type="button" data-title="Admin Categories Page" data-src="images-ss/screencapture-127-0-0-1-8000-admin-categories-2026-05-19-12_41_10.png">
-          <img src="images-ss/screencapture-127-0-0-1-8000-admin-categories-2026-05-19-12_41_10.png" alt="Admin categories page screenshot" loading="lazy">
-        </button>
-        <figcaption>Admin Categories <span class="tag">Admin</span></figcaption>
-      </figure>
-
-      <figure class="gallery-card">
-        <button class="image-button" type="button" data-title="Admin Inventory Page" data-src="images-ss/screencapture-127-0-0-1-8000-admin-inventory-2026-05-19-12_41_22.png">
-          <img src="images-ss/screencapture-127-0-0-1-8000-admin-inventory-2026-05-19-12_41_22.png" alt="Admin inventory page screenshot" loading="lazy">
-        </button>
-        <figcaption>Admin Inventory <span class="tag">Admin</span></figcaption>
-      </figure>
-
-      <figure class="gallery-card">
-        <button class="image-button" type="button" data-title="Admin Offers Page" data-src="images-ss/screencapture-127-0-0-1-8000-admin-offers-2026-05-19-12_41_40.png">
-          <img src="images-ss/screencapture-127-0-0-1-8000-admin-offers-2026-05-19-12_41_40.png" alt="Admin offers page screenshot" loading="lazy">
-        </button>
-        <figcaption>Admin Offers <span class="tag">Admin</span></figcaption>
-      </figure>
-
-      <figure class="gallery-card">
-        <button class="image-button" type="button" data-title="Admin Settings Page" data-src="images-ss/screencapture-127-0-0-1-8000-admin-settings-2026-05-19-12_41_58.png">
-          <img src="images-ss/screencapture-127-0-0-1-8000-admin-settings-2026-05-19-12_41_58.png" alt="Admin settings page screenshot" loading="lazy">
-        </button>
-        <figcaption>Admin Settings <span class="tag">Admin</span></figcaption>
-      </figure>
-    </section>
-  </main>
-
-  <div class="lightbox" id="lightbox" aria-hidden="true">
-    <div class="lightbox-inner" role="dialog" aria-modal="true" aria-labelledby="lightbox-title">
-      <div class="lightbox-top">
-        <p class="lightbox-title" id="lightbox-title"></p>
-        <button class="close-button" type="button" aria-label="Close image preview">&times;</button>
+      <div class="gal-stats">
+        <div class="stat-pill">
+          <i class="ti ti-layout-grid" aria-hidden="true"></i>
+          <span id="total-count">15</span> pages
+        </div>
+        <div class="stat-pill">
+          <i class="ti ti-tag" aria-hidden="true"></i>
+          6 categories
+        </div>
       </div>
-      <img id="lightbox-image" src="" alt="">
+    </div>
+
+    <div class="gal-toolbar">
+      <div class="gal-search">
+        <i class="ti ti-search s-icon" aria-hidden="true"></i>
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Search pages..."
+          autocomplete="off"
+        />
+      </div>
+
+      <div class="tag-filters" id="tag-filters"></div>
+
+      <div class="view-toggle">
+        <button class="vt-btn active" id="btn-grid" aria-label="Grid view">
+          <i class="ti ti-layout-grid" aria-hidden="true"></i>
+        </button>
+        <button class="vt-btn" id="btn-list" aria-label="List view">
+          <i class="ti ti-layout-list" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="g-count-bar" id="count-bar">Showing 15 pages</div>
+    <div class="gal-grid view-grid" id="grid"></div>
+  </div>
+
+  <div
+    class="lb-backdrop"
+    id="lb"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Image preview"
+  >
+    <div class="lb-box">
+      <div class="lb-topbar">
+        <div>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              flex-wrap: wrap;
+            "
+          >
+            <p class="lb-name" id="lb-name"></p>
+            <span class="lb-tag" id="lb-tag-badge"></span>
+          </div>
+          <p class="lb-sub" id="lb-sub"></p>
+        </div>
+        <button class="lb-close" id="lb-close" aria-label="Close">
+          &times;
+        </button>
+      </div>
+
+      <img class="lb-img" id="lb-img" src="" alt="" />
+
+      <div class="lb-nav">
+        <button id="lb-prev">
+          <i class="ti ti-arrow-left" aria-hidden="true"></i>
+          Prev
+        </button>
+        <div class="lb-dots" id="lb-dots"></div>
+        <button id="lb-next">
+          Next
+          <i class="ti ti-arrow-right" aria-hidden="true"></i>
+        </button>
+      </div>
     </div>
   </div>
 
+</body>
   <script>
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImage = document.getElementById('lightbox-image');
-    const lightboxTitle = document.getElementById('lightbox-title');
-    const closeButton = document.querySelector('.close-button');
+    const pages = [
+      {
+        name: "Home page",
+        tag: "Home",
+        src: "images-ss/screencapture-127-0-0-1-8000-2026-05-19-12_45_09.png",
+      },
+      {
+        name: "Shop page",
+        tag: "Store",
+        src: "images-ss/screencapture-127-0-0-1-8000-home-shop-2026-05-19-12_45_42.png",
+      },
+      {
+        name: "About page",
+        tag: "Info",
+        src: "images-ss/screencapture-127-0-0-1-8000-home-about-2026-05-19-12_46_03.png",
+      },
+      {
+        name: "Contact page",
+        tag: "Info",
+        src: "images-ss/screencapture-127-0-0-1-8000-home-contact-2026-05-19-12_46_22.png",
+      },
+      {
+        name: "Today offers",
+        tag: "Deals",
+        src: "images-ss/screencapture-127-0-0-1-8000-home-today-offers-2026-05-19-12_46_41.png",
+      },
+      {
+        name: "Cart page",
+        tag: "Order",
+        src: "images-ss/screencapture-127-0-0-1-8000-cart-2026-05-19-12_48_06.png",
+      },
+      {
+        name: "Checkout success",
+        tag: "Order",
+        src: "images-ss/screencapture-127-0-0-1-8000-checkout-success-2-2026-05-19-12_48_48.png",
+      },
+      {
+        name: "Admin orders",
+        tag: "Admin",
+        src: "images-ss/screencapture-127-0-0-1-8000-admin-orders-2026-05-19-12_40_09.png",
+      },
+      {
+        name: "Admin customers",
+        tag: "Admin",
+        src: "images-ss/screencapture-127-0-0-1-8000-admin-customers-2026-05-19-12_40_30.png",
+      },
+      {
+        name: "Admin products",
+        tag: "Admin",
+        src: "images-ss/screencapture-127-0-0-1-8000-admin-products-2026-05-19-12_40_42.png",
+      },
+      {
+        name: "Add product",
+        tag: "Admin",
+        src: "images-ss/screencapture-127-0-0-1-8000-admin-products-create-2026-05-19-12_40_55.png",
+      },
+      {
+        name: "Admin categories",
+        tag: "Admin",
+        src: "images-ss/screencapture-127-0-0-1-8000-admin-categories-2026-05-19-12_41_10.png",
+      },
+      {
+        name: "Admin inventory",
+        tag: "Admin",
+        src: "images-ss/screencapture-127-0-0-1-8000-admin-inventory-2026-05-19-12_41_22.png",
+      },
+      {
+        name: "Admin offers",
+        tag: "Admin",
+        src: "images-ss/screencapture-127-0-0-1-8000-admin-offers-2026-05-19-12_41_40.png",
+      },
+      {
+        name: "Admin settings",
+        tag: "Admin",
+        src: "images-ss/screencapture-127-0-0-1-8000-admin-settings-2026-05-19-12_41_58.png",
+      },
+    ];
 
-    document.querySelectorAll('.image-button').forEach((button) => {
-      button.addEventListener('click', () => {
-        lightboxImage.src = button.dataset.src;
-        lightboxImage.alt = `${button.dataset.title} screenshot`;
-        lightboxTitle.textContent = button.dataset.title;
-        lightbox.classList.add('is-open');
-        lightbox.setAttribute('aria-hidden', 'false');
-        closeButton.focus();
+    const tagIcons = {
+      Home: "ti-home",
+      Store: "ti-shopping-cart",
+      Info: "ti-info-circle",
+      Deals: "ti-tag",
+      Order: "ti-package",
+      Admin: "ti-shield",
+    };
+
+    const allTags = ["All", ...new Set(pages.map((p) => p.tag))];
+
+    let activeTag = "All";
+    let searchQ = "";
+    let currentIdx = 0;
+    let visible = [];
+
+    const grid = document.getElementById("grid");
+    const lb = document.getElementById("lb");
+    const lbImg = document.getElementById("lb-img");
+    const lbName = document.getElementById("lb-name");
+    const lbSub = document.getElementById("lb-sub");
+    const lbDots = document.getElementById("lb-dots");
+    const lbBadge = document.getElementById("lb-tag-badge");
+
+    function getVisible() {
+      return pages.filter((p) => {
+        const tagOk = activeTag === "All" || p.tag === activeTag;
+        const qOk =
+          !searchQ ||
+          p.name.toLowerCase().includes(searchQ) ||
+          p.tag.toLowerCase().includes(searchQ);
+        return tagOk && qOk;
       });
-    });
-
-    function closeLightbox() {
-      lightbox.classList.remove('is-open');
-      lightbox.setAttribute('aria-hidden', 'true');
-      lightboxImage.src = '';
     }
 
-    closeButton.addEventListener('click', closeLightbox);
+    function renderFilters() {
+      const tf = document.getElementById("tag-filters");
 
-    lightbox.addEventListener('click', (event) => {
-      if (event.target === lightbox) {
-        closeLightbox();
+      tf.innerHTML = allTags
+        .map((t) => {
+          const count =
+            t === "All"
+              ? pages.length
+              : pages.filter((p) => p.tag === t).length;
+
+          return `
+          <button class="tf-btn${t === activeTag ? " active" : ""}" data-tag="${t}">
+            ${
+              t !== "All"
+                ? `<span class="dot dot-${t}"></span>`
+                : `<i class="ti ti-sparkles" style="font-size:12px;" aria-hidden="true"></i>`
+            }
+            ${t}
+            <span style="opacity:.58;font-size:11px;">${count}</span>
+          </button>
+        `;
+        })
+        .join("");
+
+      tf.querySelectorAll(".tf-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          activeTag = btn.dataset.tag;
+          renderAll();
+        });
+      });
+    }
+
+    function renderGrid() {
+      visible = getVisible();
+
+      document.getElementById("count-bar").textContent =
+        `Showing ${visible.length} of ${pages.length} pages`;
+
+      if (!visible.length) {
+        grid.innerHTML = `
+        <div class="gal-empty">
+          <i class="ti ti-photo-off" aria-hidden="true"></i>
+          No pages match your search or filter
+        </div>
+      `;
+        return;
       }
+
+      grid.innerHTML = visible
+        .map(
+          (p, i) => `
+          <div class="g-card" data-idx="${i}" role="button" tabindex="0" aria-label="Open ${p.name}">
+            <div class="g-img-wrap">
+              <img
+                src="${p.src}"
+                alt="${p.name} screenshot"
+                loading="lazy"
+                onerror="this.style.opacity=0.25"
+              />
+              <div class="g-img-overlay">
+                <i class="ti ti-zoom-in g-zoom-icon" aria-hidden="true"></i>
+              </div>
+            </div>
+
+            <div class="g-body">
+              <span class="g-name">
+                <i class="ti ${tagIcons[p.tag] || "ti-file"}" aria-hidden="true"></i>
+                ${p.name}
+              </span>
+              <span class="g-tag tag-${p.tag}">${p.tag}</span>
+            </div>
+          </div>
+        `,
+        )
+        .join("");
+
+      grid.querySelectorAll(".g-card").forEach((card) => {
+        card.addEventListener("click", () => openLb(+card.dataset.idx));
+        card.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openLb(+card.dataset.idx);
+          }
+        });
+      });
+    }
+
+    function renderAll() {
+      renderFilters();
+      renderGrid();
+    }
+
+    function openLb(idx) {
+      currentIdx = idx;
+      const p = visible[idx];
+      if (!p) return;
+
+      lbImg.src = p.src;
+      lbImg.alt = p.name;
+      lbName.textContent = p.name;
+      lbSub.textContent = `${idx + 1} of ${visible.length}`;
+      lbBadge.textContent = p.tag;
+      lbBadge.className = "lb-tag tag-" + p.tag;
+
+      lbDots.innerHTML = visible
+        .map(
+          (_, i) =>
+            `<div class="lb-dot${i === idx ? " cur" : ""}" data-i="${i}" aria-label="Go to image ${i + 1}"></div>`,
+        )
+        .join("");
+
+      lbDots.querySelectorAll(".lb-dot").forEach((dot) => {
+        dot.addEventListener("click", () => openLb(+dot.dataset.i));
+      });
+
+      lb.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeLb() {
+      lb.classList.remove("open");
+      lbImg.src = "";
+      document.body.style.overflow = "";
+    }
+
+    function nav(dir) {
+      if (!visible.length) return;
+      openLb((currentIdx + dir + visible.length) % visible.length);
+    }
+
+    document.getElementById("lb-close").addEventListener("click", closeLb);
+    document.getElementById("lb-prev").addEventListener("click", () => nav(-1));
+    document.getElementById("lb-next").addEventListener("click", () => nav(1));
+
+    lb.addEventListener("click", (e) => {
+      if (e.target === lb) closeLb();
     });
 
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && lightbox.classList.contains('is-open')) {
-        closeLightbox();
-      }
+    document.addEventListener("keydown", (e) => {
+      if (!lb.classList.contains("open")) return;
+      if (e.key === "Escape") closeLb();
+      if (e.key === "ArrowLeft") nav(-1);
+      if (e.key === "ArrowRight") nav(1);
     });
+
+    document.getElementById("search-input").addEventListener("input", (e) => {
+      searchQ = e.target.value.trim().toLowerCase();
+      renderGrid();
+    });
+
+    document.getElementById("btn-grid").addEventListener("click", () => {
+      grid.className = "gal-grid view-grid";
+      document.getElementById("btn-grid").classList.add("active");
+      document.getElementById("btn-list").classList.remove("active");
+    });
+
+    document.getElementById("btn-list").addEventListener("click", () => {
+      grid.className = "gal-grid view-list";
+      document.getElementById("btn-list").classList.add("active");
+      document.getElementById("btn-grid").classList.remove("active");
+    });
+
+    renderAll();
   </script>
-</body>
 </html>
